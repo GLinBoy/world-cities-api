@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: dev
+application:
+  initialize-cities-data: true
+  cities-file-path: data/worldcities.csv
