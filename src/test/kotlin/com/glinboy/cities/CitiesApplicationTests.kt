@@ -1,0 +1,13 @@
+package com.glinboy.cities
+
+import org.junit.jupiter.api.Test
+import org.springframework.boot.test.context.SpringBootTest
+
+@SpringBootTest
+class CitiesApplicationTests {
+
+    @Test
+    fun contextLoads() {
+    }
+
+}
