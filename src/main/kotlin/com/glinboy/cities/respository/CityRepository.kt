@@ -29,4 +29,26 @@ interface CityRepository : JpaRepository<City, Long> {
             " OR " +
             " lower(c.adminName) like lower( concat('%', ?1,'%') ) ")
     fun searchCity(query: String, pageable: Pageable): Page<City>
+
+    @Query(value = "SELECT c.country, c.iso2, c.iso3 from CITY c " +
+            " WHERE " +
+            " lower(c.country) like lower( concat('%', ?1,'%') ) " +
+            " OR " +
+            " lower(c.iso2) like lower( concat('%', ?1,'%') ) " +
+            " OR " +
+            " lower(c.iso3) like lower( concat('%', ?1,'%') ) " +
+            " GROUP BY c.country, c.iso2, c.iso3 ",
+        countQuery = "SELECT COUNT(*) " +
+                " FROM ( " +
+                " SELECT c.country, c.iso2, c.iso3 from CITY c " +
+                " WHERE " +
+                " lower(c.country) like lower( concat('%', ?1,'%') ) " +
+                " OR " +
+                " lower(c.iso2) like lower( concat('%', ?1,'%') ) " +
+                " OR " +
+                " lower(c.iso3) like lower( concat('%', ?1,'%') ) " +
+                " GROUP BY c.country, c.iso2, c.iso3 " +
+                " ) ",
+    nativeQuery = true)
+    fun searchCountry(query: String, pageable: Pageable): Page<Country>
 }
