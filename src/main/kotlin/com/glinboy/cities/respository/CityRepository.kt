@@ -51,4 +51,6 @@ interface CityRepository : JpaRepository<City, Long> {
                 " ) ",
     nativeQuery = true)
     fun searchCountry(query: String, pageable: Pageable): Page<Country>
+
+    fun findAllByIso2OrIso3(iso2: String, iso3: String, pageable: Pageable): Page<City>
 }
