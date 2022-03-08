@@ -14,4 +14,19 @@ interface CityRepository : JpaRepository<City, Long> {
         countQuery = "SELECT COUNT(*) FROM (SELECT country, iso2, iso3 from CITY GROUP BY country, iso2, iso3)",
         nativeQuery = true)
     fun findDistinctCountry(pageable: Pageable): Page<Country>
+
+    @Query("SELECT c FROM City c " +
+            " WHERE " +
+            " lower(c.city) like lower( concat('%', ?1,'%') ) " +
+            " OR " +
+            " lower(c.cityAscii) like lower( concat('%', ?1,'%') ) " +
+            " OR " +
+            " lower(c.country) like lower( concat('%', ?1,'%') ) " +
+            " OR " +
+            " lower(c.iso2) like lower( concat('%', ?1,'%') ) " +
+            " OR " +
+            " lower(c.iso3) like lower( concat('%', ?1,'%') ) " +
+            " OR " +
+            " lower(c.adminName) like lower( concat('%', ?1,'%') ) ")
+    fun searchCity(query: String, pageable: Pageable): Page<City>
 }
