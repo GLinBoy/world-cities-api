@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service
 
 @Service
 class CityServiceImpl(val cityRepository: CityRepository) : CityService {
+    override fun getAllCities(pageable: Pageable): Page<City> = cityRepository.findAll(pageable)
 }
