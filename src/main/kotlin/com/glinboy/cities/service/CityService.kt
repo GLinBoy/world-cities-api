@@ -6,4 +6,5 @@ import org.springframework.data.domain.Pageable
 
 interface CityService {
     fun getAllCities(pageable: Pageable): Page<City>
+    fun searchCity(query: String, pageable: Pageable): Page<City>
 }
