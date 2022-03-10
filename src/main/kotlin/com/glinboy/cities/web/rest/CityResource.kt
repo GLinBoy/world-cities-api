@@ -17,11 +17,23 @@ import javax.validation.constraints.Pattern
 class CityResource(val cityService: CityService) {
 
     @JvmField final val BASE_CITY_URL = "/api/v1/cities"
+    @JvmField final val BASE_CITY_SEARCH_URL = "/api/v1/cities/search?q=%s"
+
     @GetMapping
     fun getCities(pageable: Pageable): ResponseEntity<List<City>> {
         val page = cityService.getAllCities(pageable)
         return ResponseEntity.ok()
             .headers(PaginationUtil.generateHeaders(page, BASE_CITY_URL))
+            .body(page.content)
+    }
+
+    @GetMapping("search")
+    fun searchCity(@Valid @Pattern(regexp = "\\p{L}+")
+                   @RequestParam(name = "q", required = true) query: String,
+                   pageable: Pageable): ResponseEntity<List<City>> {
+        val page = cityService.searchCity(query, pageable)
+        return ResponseEntity.ok()
+            .headers(PaginationUtil.generateHeaders(page, BASE_CITY_SEARCH_URL.format(query)))
             .body(page.content)
     }
 }
