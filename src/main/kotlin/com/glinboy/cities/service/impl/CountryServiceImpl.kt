@@ -14,4 +14,6 @@ class CountryServiceImpl(val cityRepository: CityRepository): CountryService {
         cityRepository.findDistinctCountry(pageable)
     override fun searchCountry(query: String, pageable: Pageable): Page<Country> =
         cityRepository.searchCountry(query, pageable)
+    override fun getCountryCities(isoCode: String, pageable: Pageable): Page<City> =
+        cityRepository.findAllByIso2OrIso3(isoCode.uppercase(), isoCode.uppercase(), pageable)
 }
