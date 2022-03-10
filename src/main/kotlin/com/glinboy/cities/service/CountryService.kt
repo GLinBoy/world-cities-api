@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable
 
 interface CountryService {
     fun getAllCountries(pageable: Pageable): Page<Country>
-    fun searchCity(query: String, pageable: Pageable): Page<Country>
+    fun searchCountry(query: String, pageable: Pageable): Page<Country>
     fun getCountryCities(isoCode: String, pageable: Pageable): Page<City>
 }
