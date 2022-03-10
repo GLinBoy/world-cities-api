@@ -15,11 +15,22 @@ import javax.validation.constraints.Pattern
 class CountryResource(val countryService: CountryService) {
 
     @JvmField final val BASE_URL = "/api/v1/countries"
+    @JvmField final val BASE_COUNTRY_SEARCH_URL = "/api/v1/countries/search?q=%s"
     @GetMapping
     fun getCountries(pageable: Pageable): ResponseEntity<List<Country>> {
         var page = countryService.getAllCountries(pageable)
         return ResponseEntity.ok()
             .headers(PaginationUtil.generateHeaders(page, BASE_URL))
+            .body(page.content)
+    }
+
+    @GetMapping("search")
+    fun searchCountry(@Valid @Pattern(regexp = "\\p{L}+")
+                      @RequestParam(name = "q", required = true) query: String,
+                      pageable: Pageable): ResponseEntity<List<Country>> {
+        val page = countryService.searchCountry(query, pageable)
+        return ResponseEntity.ok()
+            .headers(PaginationUtil.generateHeaders(page, BASE_COUNTRY_SEARCH_URL.format(query)))
             .body(page.content)
     }
 }
