@@ -16,6 +16,8 @@ class CountryResource(val countryService: CountryService) {
 
     @JvmField final val BASE_URL = "/api/v1/countries"
     @JvmField final val BASE_COUNTRY_SEARCH_URL = "/api/v1/countries/search?q=%s"
+    @JvmField final val BASE_COUNTRY_CITIES_ISO2_URL = "/api/v1/countries/%s/cities"
+
     @GetMapping
     fun getCountries(pageable: Pageable): ResponseEntity<List<Country>> {
         var page = countryService.getAllCountries(pageable)
@@ -31,6 +33,14 @@ class CountryResource(val countryService: CountryService) {
         val page = countryService.searchCountry(query, pageable)
         return ResponseEntity.ok()
             .headers(PaginationUtil.generateHeaders(page, BASE_COUNTRY_SEARCH_URL.format(query)))
+            .body(page.content)
+    }
+
+    @GetMapping("{isoCode:[a-zA-Z]{2,3}}/cities")
+    fun getCountryCities(@PathVariable isoCode: String, pageable: Pageable): ResponseEntity<List<City>> {
+        val page = countryService.getCountryCities(isoCode, pageable)
+        return ResponseEntity.ok()
+            .headers(PaginationUtil.generateHeaders(page, BASE_COUNTRY_CITIES_ISO2_URL.format(isoCode)))
             .body(page.content)
     }
 }
