@@ -13,4 +13,13 @@ import javax.validation.constraints.Pattern
 @RestController
 @RequestMapping("/api/v1/countries")
 class CountryResource(val countryService: CountryService) {
+
+    @JvmField final val BASE_URL = "/api/v1/countries"
+    @GetMapping
+    fun getCountries(pageable: Pageable): ResponseEntity<List<Country>> {
+        var page = countryService.getAllCountries(pageable)
+        return ResponseEntity.ok()
+            .headers(PaginationUtil.generateHeaders(page, BASE_URL))
+            .body(page.content)
+    }
 }
