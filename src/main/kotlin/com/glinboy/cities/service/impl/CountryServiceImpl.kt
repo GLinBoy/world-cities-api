@@ -12,4 +12,6 @@ import org.springframework.stereotype.Service
 class CountryServiceImpl(val cityRepository: CityRepository): CountryService {
     override fun getAllCountries(pageable: Pageable): Page<Country> =
         cityRepository.findDistinctCountry(pageable)
+    override fun searchCountry(query: String, pageable: Pageable): Page<Country> =
+        cityRepository.searchCountry(query, pageable)
 }
