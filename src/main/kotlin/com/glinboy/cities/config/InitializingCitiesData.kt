@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.core.io.ClassPathResource
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 import java.io.BufferedReader
 import java.io.FileReader
 
@@ -24,6 +25,7 @@ class InitializingCitiesData(val cityRepository: CityRepository) : InitializingB
 
     override fun afterPropertiesSet() {
         log.info("Initializing Cities Data...")
+        cityRepository.deleteAllInBatch()
         val worldCities = ClassPathResource(filePath)
         if(worldCities.exists()) {
             FileReader(worldCities.file).use {
