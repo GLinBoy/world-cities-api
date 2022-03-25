@@ -23,6 +23,7 @@ class InitializingCitiesData(val cityRepository: CityRepository) : InitializingB
 
     private val log = LoggerFactory.getLogger(this.javaClass)
 
+    @Transactional
     override fun afterPropertiesSet() {
         log.info("Initializing Cities Data...")
         cityRepository.deleteAllInBatch()
