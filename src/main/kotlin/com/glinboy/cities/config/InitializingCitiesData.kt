@@ -24,9 +24,9 @@ class InitializingCitiesData(val cityRepository: CityRepository) : InitializingB
 
     override fun afterPropertiesSet() {
         log.info("Initializing Cities Data...")
-        val worldcities = ClassPathResource(filePath)
-        if(worldcities.exists()) {
-            FileReader(worldcities.file).use {
+        val worldCities = ClassPathResource(filePath)
+        if(worldCities.exists()) {
+            FileReader(worldCities.file).use {
                 BufferedReader(it).use {
                     CSVParser(it, CSVFormat.DEFAULT.withFirstRecordAsHeader()).use {
                         val cities = mutableListOf<City>()
