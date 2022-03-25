@@ -51,6 +51,7 @@ class InitializingCitiesData(val cityRepository: CityRepository) : InitializingB
                             )
                         }
                         cityRepository.saveAll(cities)
+                        log.info("{} cities have been saved in database.", cities.size)
                     }
                 }
             }
