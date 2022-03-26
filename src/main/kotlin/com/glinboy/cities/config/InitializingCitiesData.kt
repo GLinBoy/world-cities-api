@@ -46,7 +46,7 @@ class InitializingCitiesData(val cityRepository: CityRepository) : InitializingB
                                     iso3 = csvRecord.get("iso3"),
                                     adminName = csvRecord.get("admin_name"),
                                     capital = csvRecord.get("capital"),
-                                    population = csvRecord.get("id").toLong(),
+                                    population = csvRecord.get("population").toLong(),
                                 )
                             )
                         }
