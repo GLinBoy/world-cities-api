@@ -1,0 +1,20 @@
+package com.glinboy.cities.web.integration
+
+import org.junit.jupiter.api.Test
+
+import org.junit.jupiter.api.Assertions.*
+
+internal class CountryResourceIT {
+
+    @Test
+    fun getCountries() {
+    }
+
+    @Test
+    fun searchCountry() {
+    }
+
+    @Test
+    fun getCountryCities() {
+    }
+}
