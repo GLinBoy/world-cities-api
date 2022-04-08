@@ -101,6 +101,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <arguments>
+                        <argument>-XX:+UseZGC</argument>
+                        <argument>-Xlog:gc*:file=log/linkshorter.gc.log</argument>
+                        <argument>-XX:+HeapDumpOnOutOfMemoryError</argument>
+                        <argument>-XX:HeapDumpPath=log/crashes/linkshorter.hprof</argument>
+                        <argument>-Xss256k</argument>
+                        <argument>-Dsun.net.client.defaultConnectTimeout=2000</argument>
+                        <argument>-Dsun.net.client.defaultReadTimeout=2000</argument>
+                    </arguments>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
