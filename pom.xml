@@ -15,7 +15,7 @@
     <description>Cities</description>
     <properties>
         <java.version>17</java.version>
-        <kotlin.version>1.7.22</kotlin.version>
+        <kotlin.version>1.8.21</kotlin.version>
         <commons-csv.version>1.10.0</commons-csv.version>
     </properties>
     <dependencies>
