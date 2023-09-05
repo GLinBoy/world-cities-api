@@ -17,6 +17,7 @@
         <java.version>17</java.version>
         <kotlin.version>1.8.22</kotlin.version>
         <commons-csv.version>1.10.0</commons-csv.version>
+        <springdoc.version>2.2.0</springdoc.version>
     </properties>
     <dependencies>
         <dependency>
@@ -60,6 +61,11 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
 
         <dependency>
