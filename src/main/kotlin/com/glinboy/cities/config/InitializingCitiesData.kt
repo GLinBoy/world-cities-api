@@ -31,7 +31,7 @@ class InitializingCitiesData(val cityRepository: CityRepository) : InitializingB
         if(worldCities.exists()) {
             FileReader(worldCities.file).use {
                 BufferedReader(it).use {
-                    CSVParser(it, CSVFormat.DEFAULT.withFirstRecordAsHeader()).use {
+                    CSVParser(it, CSVFormat.DEFAULT.builder().setHeader().setSkipHeaderRecord(true).build()).use {
                         val cities = mutableListOf<City>()
                         for (csvRecord in it) {
                             cities.add(
