@@ -6,7 +6,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 class PaginationUtil {
     companion object {
-        fun <T> generateHeaders(page: Page<T>, baseUrl: String ): HttpHeaders {
+        fun <T: Any> generateHeaders(page: Page<T>, baseUrl: String ): HttpHeaders {
             val headers = HttpHeaders()
             headers.set("X-Total-Count", page.totalElements.toString())
             var link = ""
