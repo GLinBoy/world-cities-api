@@ -3,4 +3,4 @@ I used basic version of [simplemaps.com](https://simplemaps.com/data/world-citie
 
 ### NOTE 1: At this moment that I commit and push this data, they picked [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) for free version of their data.
 
-## NOTE 2:  It was last refreshed in March 2022.
+## NOTE 2:  It was last refreshed in January 2026 (Data last updated 2025).
