@@ -17,7 +17,7 @@
         <java.version>25</java.version>
         <kotlin.version>2.3.21</kotlin.version>
         <commons-csv.version>1.14.1</commons-csv.version>
-        <springdoc.version>3.0.0</springdoc.version>
+        <springdoc.version>3.0.3</springdoc.version>
         <editorconfig.version>0.2.0</editorconfig.version>
     </properties>
     <dependencies>
